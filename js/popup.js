@@ -81,10 +81,10 @@ function addGithub(url) {
         url: url,
         dataType: "html",
         success: function (data) {
-            var prefix = bugRepo + ": #" + bugNum
-            var body = $(data).filter('meta[name="description"]').attr("content");
+            var prefix = '';
+            var body = '';
             var title = $(data).find('.js-issue-title').text();
-            title = title + " (" + type + ")"
+            title = title + " [" + type + "]"
             addCard(prefix, title, body, url)
         },
         error: function () {
@@ -160,6 +160,3 @@ document.addEventListener('DOMContentLoaded', function () {
     $("#board_list").change(boardSelected);
     $("#add-bug").click(addClicked);
 });
-
-// trello board id 55a44498b1c038e829b5815a
-// inbox list id 55a6adf27cdcb83158723ffe
