@@ -5,7 +5,7 @@ function closeOnSuccess() {
 }
 
 var addCard = function(num, title, bdesc, link) {
-    var list = $('#lists_list :selected').val();
+    var list = '55a6adf27cdcb83158723ffe';
     if (num == ''){
         var name = title;
     }
