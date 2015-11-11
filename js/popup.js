@@ -21,14 +21,6 @@ var addCard = function(num, title, bdesc, link) {
     });
 }
 
-var getBoards = function(){
-    Trello.get("/members/me/boards?filter=open", function(boards) {
-        $.each(boards, function(ix, boards) {
-            $(new Option(boards.name, boards.id)).appendTo("#board_list");
-        });
-    });
-}
-
 function boardSelected(){
     var board = $('#board_list :selected').val();
     var boardLink = "https://trello.com/board/" + board
@@ -58,7 +50,6 @@ function onAuthorize() {
     });
     $('#loggedout').hide();
     $('#loggedin').show();
-    getBoards();
 }
 
 var logout = function() {
