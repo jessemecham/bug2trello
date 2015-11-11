@@ -83,8 +83,7 @@ function addGithub(url) {
         success: function (data) {
             var prefix = '';
             var body = '';
-            var title = $(data).find('.js-issue-title').text();
-            title = title + " [" + type + "]"
+            var title = $(data).find('.js-issue-title').text() + " [bug]";
             addCard(prefix, title, body, url)
         },
         error: function () {
