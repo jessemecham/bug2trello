@@ -105,34 +105,13 @@ function addGithub(url) {
 function parseLink(tablink) {
     var parser = document.createElement('a');
     parser.href = tablink;
-    if(parser.hostname == 'bugs.launchpad.net' && (parser.pathname.indexOf('+bug') > -1)) {
-        addLaunchpad(parser, "Bug");
-    }
-    else if (parser.hostname == 'code.launchpad.net' && (parser.pathname.indexOf('+merge') > -1)) {
-        addLaunchpad(parser, "Merge");
-    }
-    else if(parser.hostname == 'github.com') {
+    if(parser.hostname == 'github.com') {
         if (parser.pathname.indexOf('issues') > -1) {
             addGithub(parser, 'Issue');
         }
         else if (parser.pathname.indexOf('pull') > -1) {
             addGithub(parser, 'Pull');
         }
-    }
-    else if(parser.hostname == 'bitbucket.org' && (parser.pathname.indexOf('issue') > -1)) {
-        addBitbucket(parser);
-    }
-    else if(parser.hostname == 'sourceforge.net' && (parser.pathname.indexOf('bugs') > -1 || parser.pathname.indexOf('feature-requests') > -1)) {
-        addSourceforge(parser);
-    }
-    else if(parser.pathname.indexOf('show_bug.cgi') > -1) {
-        addBugzilla(parser);
-    }
-    else if(parser.hostname == 'code.google.com' && (parser.pathname.indexOf('detail') > -1)) {
-        addGoogle(parser);
-    }
-    else if(parser.hostname == 'bugs.debian.org' && (parser.pathname.indexOf('bugreport.cgi') > -1)) {
-        addDebianBTS(parser);
     }
     else {
         $.ajax({
@@ -190,3 +169,6 @@ document.addEventListener('DOMContentLoaded', function () {
     $("#board_list").change(boardSelected);
     $("#add-bug").click(addClicked);
 });
+
+// trello board id 55a44498b1c038e829b5815a
+// inbox list id 55a6adf27cdcb83158723ffe
